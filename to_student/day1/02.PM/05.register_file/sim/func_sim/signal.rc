@@ -1,0 +1,81 @@
+Magic 271485
+Revision Verdi_R-2020.12-SP2
+
+; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
+viewPort 0 25 960 602 184 116
+
+; File list:
+; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
+openDirFile -d / "" "/home/user/tmp_IDEC/05.register_file/sim/func_sim/wave.fsdb"
+
+; file time scale:
+; fileTimeScale ### s|ms|us|ns|ps
+
+; signal spacing:
+signalSpacing 5
+
+; windowTimeUnit is used for zoom, cursor & marker
+; waveform viewport range
+zoom 0.000000 38737.577640
+cursor 15000.000000
+marker 0.000000
+
+; user define markers
+; userMarker time_pos marker_name color linestyle
+; visible top row signal index
+top 0
+; marker line index
+markerPos 13
+
+; event list
+; addEvent event_name event_expression
+; curEvent event_name
+
+
+
+COMPLEX_EVENT_BEGIN
+
+
+COMPLEX_EVENT_END
+
+
+
+; toolbar current search type
+; curSTATUS search_type
+curSTATUS ByChange
+
+
+addGroup "input"
+activeDirFile "" "/home/user/tmp_IDEC/05.register_file/sim/func_sim/wave.fsdb"
+addSignal -h 15 /testbench/clk
+addSignal -h 15 -holdScope rst_n
+addSignal -h 15 -UNSIGNED -UDEC -holdScope a1[4:0]
+addSignal -h 15 -UNSIGNED -UDEC -holdScope a2[4:0]
+addGroup "output"
+addSignal -h 15 -UNSIGNED -UDEC /testbench/rd1[31:0]
+addSignal -h 15 -UNSIGNED -UDEC -holdScope rd2[31:0]
+addGroup "WB input"
+addSignal -h 15 /testbench/we3
+addSignal -h 15 -UNSIGNED -UDEC -holdScope a3[4:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope wd3[31:0]
+addGroup "WB result (register)"
+addSignal -h 15 /testbench/dut/rf5[31:0]
+addSignal -h 15 -holdScope rf10[31:0]
+addGroup "G5"
+
+; getSignalForm Scope Hierarchy Status
+; active file of getSignalForm
+activeDirFile "" "/home/user/tmp_IDEC/05.register_file/sim/func_sim/wave.fsdb"
+
+GETSIGNALFORM_SCOPE_HIERARCHY_BEGIN
+getSignalForm close
+
+"/testbench"
+
+SCOPE_LIST_BEGIN
+"/testbench"
+SCOPE_LIST_END
+
+GETSIGNALFORM_SCOPE_HIERARCHY_END
+
+

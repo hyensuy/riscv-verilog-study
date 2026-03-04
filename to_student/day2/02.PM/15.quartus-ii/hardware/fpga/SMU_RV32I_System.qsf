@@ -1,0 +1,154 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 2020  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions 
+# and other software and tools, and any partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel FPGA IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Intel and sold by Intel or its authorized distributors.  Please
+# refer to the applicable agreement for further details, at
+# https://fpgasoftware.intel.com/eula.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus Prime
+# Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+# Date created = 11:19:35  January 19, 2023
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		SMU_RV32I_System_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus Prime software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "Cyclone IV E"
+set_global_assignment -name DEVICE EP4CE115F29C7
+set_global_assignment -name TOP_LEVEL_ENTITY SMU_RV32I_System
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 20.1.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "11:19:35  JANUARY 19, 2023"
+set_global_assignment -name LAST_QUARTUS_VERSION "20.1.1 Lite Edition"
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
+set_global_assignment -name NOMINAL_CORE_SUPPLY_VOLTAGE 1.2V
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name VERILOG_INPUT_VERSION SYSTEMVERILOG_2005
+set_global_assignment -name VERILOG_SHOW_LMF_MAPPING_MESSAGES OFF
+set_global_assignment -name VERILOG_MACRO "FPGA=<None>"
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_location_assignment PIN_AB28 -to SW[0]
+set_location_assignment PIN_AC28 -to SW[1]
+set_location_assignment PIN_AC25 -to SW[8]
+set_location_assignment PIN_AB25 -to SW[9]
+set_location_assignment PIN_AB26 -to SW[7]
+set_location_assignment PIN_AD26 -to SW[6]
+set_location_assignment PIN_AC26 -to SW[5]
+set_location_assignment PIN_AB27 -to SW[4]
+set_location_assignment PIN_AD27 -to SW[3]
+set_location_assignment PIN_AC27 -to SW[2]
+set_location_assignment PIN_G17 -to LEDR[9]
+set_location_assignment PIN_J17 -to LEDR[8]
+set_location_assignment PIN_H19 -to LEDR[7]
+set_location_assignment PIN_J19 -to LEDR[6]
+set_location_assignment PIN_E18 -to LEDR[5]
+set_location_assignment PIN_F18 -to LEDR[4]
+set_location_assignment PIN_F21 -to LEDR[3]
+set_location_assignment PIN_E19 -to LEDR[2]
+set_location_assignment PIN_F19 -to LEDR[1]
+set_location_assignment PIN_G19 -to LEDR[0]
+set_location_assignment PIN_H22 -to HEX0[6]
+set_location_assignment PIN_J22 -to HEX0[5]
+set_location_assignment PIN_L25 -to HEX0[4]
+set_location_assignment PIN_L26 -to HEX0[3]
+set_location_assignment PIN_E17 -to HEX0[2]
+set_location_assignment PIN_F22 -to HEX0[1]
+set_location_assignment PIN_G18 -to HEX0[0]
+set_location_assignment PIN_U24 -to HEX1[6]
+set_location_assignment PIN_U23 -to HEX1[5]
+set_location_assignment PIN_W25 -to HEX1[4]
+set_location_assignment PIN_W22 -to HEX1[3]
+set_location_assignment PIN_W21 -to HEX1[2]
+set_location_assignment PIN_Y22 -to HEX1[1]
+set_location_assignment PIN_M24 -to HEX1[0]
+set_location_assignment PIN_W28 -to HEX2[6]
+set_location_assignment PIN_W27 -to HEX2[5]
+set_location_assignment PIN_Y26 -to HEX2[4]
+set_location_assignment PIN_W26 -to HEX2[3]
+set_location_assignment PIN_Y25 -to HEX2[2]
+set_location_assignment PIN_AA26 -to HEX2[1]
+set_location_assignment PIN_AA25 -to HEX2[0]
+set_location_assignment PIN_Y19 -to HEX3[6]
+set_location_assignment PIN_AF23 -to HEX3[5]
+set_location_assignment PIN_AD24 -to HEX3[4]
+set_location_assignment PIN_AA21 -to HEX3[3]
+set_location_assignment PIN_AB20 -to HEX3[2]
+set_location_assignment PIN_U21 -to HEX3[1]
+set_location_assignment PIN_V21 -to HEX3[0]
+set_location_assignment PIN_Y2 -to CLOCK_50
+set_location_assignment PIN_M23 -to BUTTON[0]
+set_location_assignment PIN_N21 -to BUTTON[2]
+set_location_assignment PIN_M21 -to BUTTON[1]
+set_location_assignment PIN_G9 -to UART_TXD
+set_location_assignment PIN_G12 -to UART_RXD
+set_global_assignment -name ENABLE_OCT_DONE OFF
+set_global_assignment -name ENABLE_CONFIGURATION_PINS OFF
+set_global_assignment -name ENABLE_BOOT_SEL_PIN OFF
+set_global_assignment -name USE_CONFIGURATION_DEVICE ON
+set_global_assignment -name CYCLONEIII_CONFIGURATION_DEVICE EPCS64
+set_global_assignment -name CRC_ERROR_OPEN_DRAIN OFF
+set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -rise
+set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -fall
+set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -rise
+set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -fall
+set_global_assignment -name OPTIMIZATION_MODE BALANCED
+
+#set_global_assignment -name VERILOG_FILE ../src/rtl/12PLL/clkpll_0_90_225_270/clkpll.v
+set_global_assignment -name VERILOG_FILE ../src/rtl/12PLL/alt_pll.v
+set_global_assignment -name SDC_FILE SMU_RV32I_System.sdc
+set_global_assignment -name VERILOG_FILE ../src/rtl/SMU_RV32I_System.v
+set_global_assignment -name VERILOG_FILE ../src/rtl/rv32i_cpu.v
+set_global_assignment -name VERILOG_FILE ../src/rtl/datapath.v
+set_global_assignment -name VERILOG_FILE ../src/rtl/01controller/maindec.v
+set_global_assignment -name VERILOG_FILE ../src/rtl/01controller/controller.v
+set_global_assignment -name VERILOG_FILE ../src/rtl/01controller/aludec.v
+set_global_assignment -name SYSTEMVERILOG_FILE ../src/rtl/02memory/dualport_mem_synch_rw_dualclk.sv
+set_global_assignment -name VERILOG_FILE ../src/rtl/03register_file/reg_file_async.v
+set_global_assignment -name VERILOG_FILE ../src/rtl/04extend_unit/extend.v
+set_global_assignment -name VERILOG_FILE ../src/rtl/05ALU_unit/alu.v
+set_global_assignment -name VERILOG_FILE ../src/rtl/05ALU_unit/adder_32bit.v
+set_global_assignment -name VERILOG_FILE ../src/rtl/06branch_unit/branch_logic.v
+set_global_assignment -name VERILOG_FILE ../src/rtl/07Byte_Enable/BE_logic.v
+set_global_assignment -name VERILOG_FILE ../src/rtl/08Register_write_data_logic/register_write_data_logic.v
+set_global_assignment -name VERILOG_FILE ../src/rtl/09Next_PC_logic/next_pc_logic.v
+set_global_assignment -name VERILOG_FILE ../src/rtl/09Next_PC_logic/alu_add.v
+set_global_assignment -name VERILOG_FILE ../src/rtl/09Next_PC_logic/adder_1bit.v
+set_global_assignment -name VERILOG_FILE ../src/rtl/10Peripheral/TimerCounter.v
+set_global_assignment -name VERILOG_FILE ../src/rtl/10Peripheral/SEG7_LUT.v
+set_global_assignment -name VERILOG_FILE ../src/rtl/10Peripheral/GPIO.v
+set_global_assignment -name VERILOG_FILE ../src/rtl/10Peripheral/data_mux.v
+set_global_assignment -name VERILOG_FILE ../src/rtl/10Peripheral/Addr_Decoder.v
+set_global_assignment -name VERILOG_FILE ../src/rtl/11UART/uart_wrap.v
+set_global_assignment -name VERILOG_FILE ../src/rtl/11UART/uart_transmitter.v
+set_global_assignment -name VERILOG_FILE ../src/rtl/11UART/uart_receiver.v
+set_global_assignment -name VERILOG_FILE ../src/rtl/11UART/uart.v
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

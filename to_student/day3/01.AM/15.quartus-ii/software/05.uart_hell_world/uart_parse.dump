@@ -1,0 +1,138 @@
+
+uart_parse.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+10000000 <_start>:
+10000000:	10010137          	lui	x2,0x10010
+10000004:	ff010113          	addi	x2,x2,-16 # 1000fff0 <main+0xff40>
+10000008:	0a8000ef          	jal	x1,100000b0 <main>
+
+1000000c <uwrite_int8s>:
+1000000c:	00054603          	lbu	x12,0(x10)
+10000010:	02060463          	beqz	x12,10000038 <uwrite_int8s+0x2c>
+10000014:	00150693          	addi	x13,x10,1
+10000018:	80000737          	lui	x14,0x80000
+1000001c:	00072783          	lw	x15,0(x14) # 80000000 <main+0x6fffff50>
+10000020:	0017f793          	andi	x15,x15,1
+10000024:	fe078ce3          	beqz	x15,1000001c <uwrite_int8s+0x10>
+10000028:	00c72423          	sw	x12,8(x14)
+1000002c:	00168693          	addi	x13,x13,1
+10000030:	fff6c603          	lbu	x12,-1(x13)
+10000034:	fe0614e3          	bnez	x12,1000001c <uwrite_int8s+0x10>
+10000038:	00008067          	ret
+
+1000003c <strlen>:
+1000003c:	00054783          	lbu	x15,0(x10)
+10000040:	02078063          	beqz	x15,10000060 <strlen+0x24>
+10000044:	00000793          	li	x15,0
+10000048:	00178793          	addi	x15,x15,1
+1000004c:	00f50733          	add	x14,x10,x15
+10000050:	00074703          	lbu	x14,0(x14)
+10000054:	fe071ae3          	bnez	x14,10000048 <strlen+0xc>
+10000058:	00078513          	mv	x10,x15
+1000005c:	00008067          	ret
+10000060:	00000793          	li	x15,0
+10000064:	00078513          	mv	x10,x15
+10000068:	00008067          	ret
+
+1000006c <strcmp>:
+1000006c:	00054703          	lbu	x14,0(x10)
+10000070:	0005c783          	lbu	x15,0(x11)
+10000074:	02e79663          	bne	x15,x14,100000a0 <strcmp+0x34>
+10000078:	02078863          	beqz	x15,100000a8 <strcmp+0x3c>
+1000007c:	00150513          	addi	x10,x10,1
+10000080:	00158593          	addi	x11,x11,1
+10000084:	0080006f          	j	1000008c <strcmp+0x20>
+10000088:	02078063          	beqz	x15,100000a8 <strcmp+0x3c>
+1000008c:	00054703          	lbu	x14,0(x10)
+10000090:	0005c783          	lbu	x15,0(x11)
+10000094:	00150513          	addi	x10,x10,1
+10000098:	00158593          	addi	x11,x11,1
+1000009c:	fee786e3          	beq	x15,x14,10000088 <strcmp+0x1c>
+100000a0:	00100513          	li	x10,1
+100000a4:	00008067          	ret
+100000a8:	00000513          	li	x10,0
+100000ac:	00008067          	ret
+
+Disassembly of section .text.startup:
+
+100000b0 <main>:
+100000b0:	ff010113          	addi	x2,x2,-16
+100000b4:	00812423          	sw	x8,8(x2)
+100000b8:	00912223          	sw	x9,4(x2)
+100000bc:	00112623          	sw	x1,12(x2)
+100000c0:	00000497          	auipc	x9,0x0
+100000c4:	02448493          	addi	x9,x9,36 # 100000e4 <main+0x34>
+100000c8:	00000417          	auipc	x8,0x0
+100000cc:	03840413          	addi	x8,x8,56 # 10000100 <main+0x50>
+100000d0:	00048513          	mv	x10,x9
+100000d4:	f39ff0ef          	jal	x1,1000000c <uwrite_int8s>
+100000d8:	00040513          	mv	x10,x8
+100000dc:	f31ff0ef          	jal	x1,1000000c <uwrite_int8s>
+100000e0:	ff1ff06f          	j	100000d0 <main+0x20>
+
+Disassembly of section .rodata.str1.4:
+
+100000e4 <.rodata.str1.4>:
+100000e4:	0a0d                	addi	x20,x20,3
+100000e6:	6568                	flw	f10,76(x10)
+100000e8:	6c6c                	flw	f11,92(x8)
+100000ea:	5720                	lw	x8,104(x14)
+100000ec:	646c726f          	jal	x4,100c7732 <main+0xc7682>
+100000f0:	3120                	fld	f8,96(x10)
+100000f2:	203a                	fld	f0,392(x2)
+100000f4:	6f4c                	flw	f11,28(x14)
+100000f6:	6576                	flw	f10,92(x2)
+100000f8:	4920                	lw	x8,80(x10)
+100000fa:	4544                	lw	x9,12(x10)
+100000fc:	00000043          	fmadd.s	f0,f0,f0,f0,rne
+10000100:	0a0d                	addi	x20,x20,3
+10000102:	6568                	flw	f10,76(x10)
+10000104:	6c6c                	flw	f11,92(x8)
+10000106:	5720                	lw	x8,104(x14)
+10000108:	646c726f          	jal	x4,100c774e <main+0xc769e>
+1000010c:	3220                	fld	f8,96(x12)
+1000010e:	203a                	fld	f0,392(x2)
+10000110:	6f4c                	flw	f11,28(x14)
+10000112:	6576                	flw	f10,92(x2)
+10000114:	5220                	lw	x8,96(x12)
+10000116:	5349                	li	x6,-14
+10000118:	00562d43          	fmadd.s	f26,f12,f5,f0,rdn
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	3a434347          	fmsub.d	f6,f6,f4,f7,rmm
+   4:	2820                	fld	f8,80(x8)
+   6:	69466953          	0x69466953
+   a:	6576                	flw	f10,92(x2)
+   c:	4720                	lw	x8,72(x14)
+   e:	38204343          	fmadd.s	f6,f0,f2,f7,rmm
+  12:	322e                	fld	f4,232(x2)
+  14:	302e                	fld	f0,232(x2)
+  16:	322d                	jal	fffff940 <main+0xeffff890>
+  18:	3130                	fld	f12,96(x10)
+  1a:	2e39                	jal	338 <_start-0xffffcc8>
+  1c:	3530                	fld	f12,104(x10)
+  1e:	332e                	fld	f6,232(x2)
+  20:	2029                	jal	2a <_start-0xfffffd6>
+  22:	2e38                	fld	f14,88(x12)
+  24:	2e32                	fld	f28,264(x2)
+  26:	0030                	addi	x12,x2,8
+
+Disassembly of section .riscv.attributes:
+
+00000000 <.riscv.attributes>:
+   0:	1941                	addi	x18,x18,-16
+   2:	0000                	unimp
+   4:	7200                	flw	f8,32(x12)
+   6:	7369                	lui	x6,0xffffa
+   8:	01007663          	bgeu	x0,x16,14 <_start-0xfffffec>
+   c:	0000000f          	fence	unknown,unknown
+  10:	7205                	lui	x4,0xfffe1
+  12:	3376                	fld	f6,376(x2)
+  14:	6932                	flw	f18,12(x2)
+  16:	7032                	flw	f0,44(x2)
+  18:	0030                	addi	x12,x2,8

@@ -1,0 +1,143 @@
+module BE_logic( 
+	input [2:0] funct3,
+	input [1:0] Addr_Last2,
+	input [31:0] WD,
+	input [31:0] RD,
+	output reg [31:0] BE_WD,
+	output reg [31:0] BE_RD,
+	output reg [3:0] Byte_Enable
+);
+
+	always @(*)
+	begin
+		case(funct3[2:0])
+			3'b000: Byte_Enable = (Addr_Last2 == 2'b00) ? 4'b0001 :
+			      								(Addr_Last2 == 2'b01) ? 4'b0010 :
+			     									(Addr_Last2 == 2'b10) ? 4'b0100 :
+														(Addr_Last2 == 2'b11) ? 4'b1000 : 4'b000;
+
+			3'b100: Byte_Enable = (Addr_Last2 == 2'b00) ? 4'b0001 :
+														(Addr_Last2 == 2'b01) ? 4'b0010 :
+														(Addr_Last2 == 2'b10) ? 4'b0100 :
+														(Addr_Last2 == 2'b11) ? 4'b1000 : 4'b000;
+
+			3'b001: Byte_Enable = (Addr_Last2 == 2'b00) ? 4'b0011 :
+														(Addr_Last2 == 2'b10) ? 4'b1100 :  4'b000;
+						 
+			3'b101: Byte_Enable = (Addr_Last2 == 2'b00) ? 4'b0011 :
+														(Addr_Last2 == 2'b10) ? 4'b1100 :  4'b000;
+			3'b010: Byte_Enable = 4'b1111;
+			default: Byte_Enable = 4'b0000;
+		endcase
+	end
+
+	//RD = Load , WD = Store
+
+	always @(*)
+	begin	
+ 		case(Byte_Enable[3:0])
+		//----byte
+			4'b0001: 
+				case (funct3[2:0]) 
+					3'b000: 	//LB, SB 4'b0001
+						begin
+		 					BE_RD = {24'hffff_ff, RD[7:0]};
+	  	 				BE_WD = {24'h0, WD[7:0]};
+		 				end
+					3'b100: 
+						begin	//LBU 4'b0001
+							BE_RD = {24'b0000_00, RD[7:0]};
+	  	 				//BE_WD = {24'b0, WD[7:0]};
+		 				end
+				endcase
+		 
+				
+			4'b0010: 
+				case (funct3[2:0]) 
+					3'b000:
+			 			begin	//LB, SB 4'b0010
+							BE_RD = {24'hffff_ff, RD[15:8]};
+	         		BE_WD = {16'h0, WD[7:0], 8'h0}; 
+		 				end
+					3'b100: 
+						begin	//LBU 4'b0010
+							BE_RD = {24'h0000_00, RD[15:8]};
+	  	 				//BE_WD = {24'b0, WD[7:0]};
+		 				end
+				endcase
+
+			4'b0100: 
+				case (funct3[2:0]) 
+					3'b000:
+			 			begin	//LB, SB 4'b0100
+							BE_RD = {24'hffff_ff, RD[23:16]};
+	         		BE_WD = {8'h0, WD[7:0], 16'h0}; 
+		 				end
+					3'b100: 
+						begin	//LBU 4'b0100
+							BE_RD = {24'h0000_00, RD[23:16]};
+	  	 				//BE_WD = {24'b0, WD[7:0]};
+		 				end
+				endcase
+
+			4'b1000: 
+				case (funct3[2:0]) 
+					3'b000:
+			 			begin	//LB, SB 4'b0100
+							BE_RD = {24'hffff_ff, RD[31:24]};
+	         		BE_WD = {WD[7:0], 24'h0}; 
+		 				end
+					3'b100: 
+						begin	//LBU 4'b0100
+							BE_RD = {24'h0000_00, RD[31:24]};
+	  	 				//BE_WD = {24'b0, WD[7:0]};
+		 				end
+				endcase
+
+		//----Half
+			4'b0011: 
+				case (funct3[2:0]) 
+					3'b001:
+			 			begin	//LB, SB 4'b0100
+							BE_RD = {16'hffff, RD[15:0]};
+	         		BE_WD = {16'h0, WD[15:0]}; 
+		 				end
+					3'b101: 
+						begin	//LBU 4'b0100
+							BE_RD = {16'h0000, RD[15:0]};
+	  	 				//BE_WD = {24'b0, WD[7:0]};
+		 				end
+				endcase
+
+
+			4'b1100: 
+				case (funct3[2:0]) 
+					3'b001:
+			 			begin	//LB, SB 4'b0100
+							BE_RD = {16'hffff, RD[31:16]};
+	         		BE_WD = {WD[15:0], 16'h0}; 
+		 				end
+					3'b101: 
+						begin	//LBU 4'b0100
+							BE_RD = {16'h0000, RD[31:16]};
+	  	 			 //BE_WD = {24'b0, WD[7:0]};
+		 				end
+				endcase
+
+		//----word
+			4'b1111: 
+				begin
+		 			BE_RD = {RD[31:0]};
+		 			BE_WD = {WD[31:0]};
+		 		end
+
+		 default: 
+		 begin
+		  BE_RD = 32'h0;
+		 	BE_WD = 32'h0;
+		end
+ endcase
+end
+
+endmodule
+	

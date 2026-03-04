@@ -1,0 +1,102 @@
+Magic 271485
+Revision Verdi_R-2020.12-SP2
+
+; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
+viewPort 0 0 1920 977 193 84
+
+; File list:
+; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
+openDirFile -d / "" "/home/user/tmp_IDEC/day2/08.I_type_JALR/sim/func_sim/wave.fsdb"
+
+; file time scale:
+; fileTimeScale ### s|ms|us|ns|ps
+
+; signal spacing:
+signalSpacing 5
+
+; windowTimeUnit is used for zoom, cursor & marker
+; waveform viewport range
+zoom 209.712698 809.240670
+cursor 260.000000
+marker 380.000000
+
+; user define markers
+; userMarker time_pos marker_name color linestyle
+; visible top row signal index
+top 0
+; marker line index
+markerPos 24
+
+; event list
+; addEvent event_name event_expression
+; curEvent event_name
+
+
+
+COMPLEX_EVENT_BEGIN
+
+
+COMPLEX_EVENT_END
+
+
+
+; toolbar current search type
+; curSTATUS search_type
+curSTATUS ByChange
+
+
+addGroup "I type JALR"
+addSubGroup "clk"
+endSubGroup "clk"
+activeDirFile "" "/home/user/tmp_IDEC/day2/08.I_type_JALR/sim/func_sim/wave.fsdb"
+addSignal -h 15 /cpu_tb/CPU/clk
+addSignal -h 15 -holdScope reset
+addSubGroup "get instruction"
+addSignal -h 15 /cpu_tb/CPU/icpu/pc[31:0]
+addSignal -h 15 /cpu_tb/CPU/inst[31:0]
+addSignal -h 15 -UNSIGNED -BIN /cpu_tb/CPU/icpu/i_controller/opcode[6:0]
+endSubGroup "get instruction"
+addSubGroup "extend"
+addSignal -h 15 -UNSIGNED -BIN /cpu_tb/CPU/icpu/i_datapath/u_extend/ImmSrc[2:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope instr[31:7]
+addSignal -h 15 -holdScope ImmExt[31:0]
+endSubGroup "extend"
+addSubGroup "reg file"
+addSignal -h 15 -UNSIGNED -BIN /cpu_tb/CPU/icpu/i_datapath/rf/ra1[4:0]
+addSignal -h 15 /cpu_tb/CPU/icpu/i_datapath/RD1_path[31:0]
+endSubGroup "reg file"
+addSubGroup "ALU"
+addSignal -h 15 -UNSIGNED -BIN /cpu_tb/CPU/icpu/i_datapath/ALUSrcA[1:0]
+addSignal -h 15 -holdScope RD1_path[31:0]
+addSignal -h 15 -holdScope ALUSrcB
+addSignal -h 15 /cpu_tb/CPU/icpu/i_datapath/u_alu/ImmExt[31:0]
+addSignal -h 15 -UNSIGNED -BIN /cpu_tb/CPU/icpu/i_datapath/ALUControl[4:0]
+addSignal -h 15 -holdScope ALUResult[31:0]
+endSubGroup "ALU"
+addGroup "next PC"
+addSignal -h 15 -UNSIGNED -BIN /cpu_tb/CPU/icpu/i_datapath/u_next_pc_logic/PCSrc[1:0]
+addSignal -h 15 -holdScope PCNext[31:0]
+addGroup "choose WB data"
+addSignal -h 15 -UNSIGNED -BIN /cpu_tb/CPU/icpu/i_datapath/ResultSrc[1:0]
+addSignal -h 15 -holdScope WD_path[31:0]
+addGroup "Write back register"
+addSignal -h 15 /cpu_tb/CPU/icpu/i_datapath/RegWrite
+addSignal -h 15 /cpu_tb/CPU/icpu/i_datapath/rf/wd[31:0]
+addGroup "G5"
+
+; getSignalForm Scope Hierarchy Status
+; active file of getSignalForm
+activeDirFile "" "/home/user/tmp_IDEC/day2/08.I_type_JALR/sim/func_sim/wave.fsdb"
+
+GETSIGNALFORM_SCOPE_HIERARCHY_BEGIN
+getSignalForm close
+
+"/cpu_tb"
+
+SCOPE_LIST_BEGIN
+"/cpu_tb"
+SCOPE_LIST_END
+
+GETSIGNALFORM_SCOPE_HIERARCHY_END
+
+
