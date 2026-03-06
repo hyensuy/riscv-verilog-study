@@ -1,0 +1,469 @@
+
+ /----------------------------------------------------------------------------\
+ |                                                                            |
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |                                                                            |
+ |  Copyright (C) 2012 - 2020  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |                                                                            |
+ |  Permission to use, copy, modify, and/or distribute this software for any  |
+ |  purpose with or without fee is hereby granted, provided that the above    |
+ |  copyright notice and this permission notice appear in all copies.         |
+ |                                                                            |
+ |  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES  |
+ |  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF          |
+ |  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR   |
+ |  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    |
+ |  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN     |
+ |  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF   |
+ |  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.            |
+ |                                                                            |
+ \----------------------------------------------------------------------------/
+
+ Yosys 0.33 (git sha1 2584903a060)
+
+
+-- Executing script file `scripts/synth_yosys.ys' --
+
+1. Executing Verilog-2005 frontend: rtl/pe_mac.sv
+Parsing SystemVerilog input from `rtl/pe_mac.sv' to AST representation.
+Generating RTLIL representation for module `\pe_mac'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: rtl/systolic_array_4x4.sv
+Parsing SystemVerilog input from `rtl/systolic_array_4x4.sv' to AST representation.
+Generating RTLIL representation for module `\systolic_array_4x4'.
+Warning: Replacing memory \c_bus with list of registers. See rtl/systolic_array_4x4.sv:0
+Warning: Replacing memory \b_bus with list of registers. See rtl/systolic_array_4x4.sv:23
+Warning: Replacing memory \a_bus with list of registers. See rtl/systolic_array_4x4.sv:19
+Successfully finished Verilog frontend.
+
+3. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1. Analyzing design hierarchy..
+Top module:  \systolic_array_4x4
+Used module:     \pe_mac
+
+3.2. Analyzing design hierarchy..
+Top module:  \systolic_array_4x4
+Used module:     \pe_mac
+Removed 0 unused modules.
+
+4. Executing PROC pass (convert processes to netlists).
+
+4.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+4.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 2 switch rules as full_case in process $proc$rtl/systolic_array_4x4.sv:44$85 in module systolic_array_4x4.
+Marked 2 switch rules as full_case in process $proc$rtl/pe_mac.sv:15$2 in module pe_mac.
+Removed a total of 0 dead cases.
+
+4.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 4 redundant assignments.
+Promoted 56 assignments to connections.
+
+4.4. Executing PROC_INIT pass (extract init attributes).
+
+4.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:44$85'.
+Found async reset \rst_n in `\pe_mac.$proc$rtl/pe_mac.sv:15$2'.
+
+4.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~3 debug messages>
+
+4.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+Creating decoders for process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:44$85'.
+     1/2: $0\valid[0:0]
+     2/2: $0\cycle_cnt[3:0]
+Creating decoders for process `\pe_mac.$proc$rtl/pe_mac.sv:15$2'.
+     1/3: $0\c_out[17:0]
+     2/3: $0\b_out[7:0]
+     3/3: $0\a_out[7:0]
+
+4.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\systolic_array_4x4.\a_bus[0]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\a_bus[1]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\a_bus[2]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\a_bus[3]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\a_bus[4]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\a_bus[5]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\a_bus[6]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\a_bus[7]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\a_bus[8]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\a_bus[9]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\a_bus[10]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\a_bus[11]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\a_bus[12]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\a_bus[13]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\a_bus[14]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\a_bus[15]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\a_bus[16]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\a_bus[17]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\a_bus[18]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\a_bus[19]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\b_bus[0]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\b_bus[1]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\b_bus[2]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\b_bus[3]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\b_bus[4]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\b_bus[5]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\b_bus[6]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\b_bus[7]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\b_bus[8]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\b_bus[9]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\b_bus[10]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\b_bus[11]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\b_bus[12]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\b_bus[13]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\b_bus[14]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\b_bus[15]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\b_bus[16]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\b_bus[17]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\b_bus[18]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\b_bus[19]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\c_bus[0]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\c_bus[1]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\c_bus[2]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\c_bus[3]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\c_bus[4]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\c_bus[5]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\c_bus[6]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\c_bus[7]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\c_bus[8]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\c_bus[9]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\c_bus[10]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\c_bus[11]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\c_bus[12]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\c_bus[13]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\c_bus[14]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+No latch inferred for signal `\systolic_array_4x4.\c_bus[15]' from process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+
+4.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\systolic_array_4x4.\valid' using process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:44$85'.
+  created $adff cell `$procdff$108' with positive edge clock and negative level reset.
+Creating register for signal `\systolic_array_4x4.\cycle_cnt' using process `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:44$85'.
+  created $adff cell `$procdff$109' with positive edge clock and negative level reset.
+Creating register for signal `\pe_mac.\a_out' using process `\pe_mac.$proc$rtl/pe_mac.sv:15$2'.
+  created $adff cell `$procdff$110' with positive edge clock and negative level reset.
+Creating register for signal `\pe_mac.\b_out' using process `\pe_mac.$proc$rtl/pe_mac.sv:15$2'.
+  created $adff cell `$procdff$111' with positive edge clock and negative level reset.
+Creating register for signal `\pe_mac.\c_out' using process `\pe_mac.$proc$rtl/pe_mac.sv:15$2'.
+  created $adff cell `$procdff$112' with positive edge clock and negative level reset.
+
+4.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+4.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:0$90'.
+Found and cleaned up 2 empty switches in `\systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:44$85'.
+Removing empty process `systolic_array_4x4.$proc$rtl/systolic_array_4x4.sv:44$85'.
+Found and cleaned up 1 empty switch in `\pe_mac.$proc$rtl/pe_mac.sv:15$2'.
+Removing empty process `pe_mac.$proc$rtl/pe_mac.sv:15$2'.
+Cleaned up 3 empty switches.
+
+4.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module systolic_array_4x4.
+Optimizing module pe_mac.
+
+5. Executing OPT pass (performing simple optimizations).
+
+5.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module systolic_array_4x4.
+Optimizing module pe_mac.
+
+5.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\systolic_array_4x4'.
+Finding identical cells in module `\pe_mac'.
+Removed a total of 0 cells.
+
+5.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \systolic_array_4x4..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \pe_mac..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~5 debug messages>
+
+5.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \systolic_array_4x4.
+  Optimizing cells in module \pe_mac.
+Performed a total of 0 changes.
+
+5.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\systolic_array_4x4'.
+Finding identical cells in module `\pe_mac'.
+Removed a total of 0 cells.
+
+5.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$109 ($adff) from module systolic_array_4x4 (D = $procmux$97_Y, Q = \cycle_cnt).
+
+5.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \systolic_array_4x4..
+Finding unused cells or wires in module \pe_mac..
+Removed 2 unused cells and 150 unused wires.
+<suppressed ~4 debug messages>
+
+5.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module pe_mac.
+Optimizing module systolic_array_4x4.
+<suppressed ~1 debug messages>
+
+5.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+5.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \pe_mac..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \systolic_array_4x4..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~5 debug messages>
+
+5.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \pe_mac.
+  Optimizing cells in module \systolic_array_4x4.
+Performed a total of 0 changes.
+
+5.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\pe_mac'.
+Finding identical cells in module `\systolic_array_4x4'.
+Removed a total of 0 cells.
+
+5.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \pe_mac..
+Finding unused cells or wires in module \systolic_array_4x4..
+
+5.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module pe_mac.
+Optimizing module systolic_array_4x4.
+
+5.16. Finished OPT passes. (There is nothing left to do.)
+
+6. Executing FSM pass (extract and optimize FSM).
+
+6.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+6.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+6.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+6.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \pe_mac..
+Finding unused cells or wires in module \systolic_array_4x4..
+
+6.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+6.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+6.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+6.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+7. Executing OPT pass (performing simple optimizations).
+
+7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module pe_mac.
+Optimizing module systolic_array_4x4.
+
+7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\pe_mac'.
+Finding identical cells in module `\systolic_array_4x4'.
+Removed a total of 0 cells.
+
+7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \pe_mac..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \systolic_array_4x4..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~5 debug messages>
+
+7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \pe_mac.
+  Optimizing cells in module \systolic_array_4x4.
+Performed a total of 0 changes.
+
+7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\pe_mac'.
+Finding identical cells in module `\systolic_array_4x4'.
+Removed a total of 0 cells.
+
+7.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \pe_mac..
+Finding unused cells or wires in module \systolic_array_4x4..
+
+7.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module pe_mac.
+Optimizing module systolic_array_4x4.
+
+7.9. Finished OPT passes. (There is nothing left to do.)
+
+8. Executing MEMORY pass.
+
+8.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+8.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+8.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+8.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+8.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+8.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \pe_mac..
+Finding unused cells or wires in module \systolic_array_4x4..
+
+8.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+8.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+8.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \pe_mac..
+Finding unused cells or wires in module \systolic_array_4x4..
+
+8.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+8.11. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+9. Executing OPT pass (performing simple optimizations).
+
+9.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module pe_mac.
+Optimizing module systolic_array_4x4.
+
+9.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\pe_mac'.
+Finding identical cells in module `\systolic_array_4x4'.
+Removed a total of 0 cells.
+
+9.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \pe_mac..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \systolic_array_4x4..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~5 debug messages>
+
+9.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \pe_mac.
+  Optimizing cells in module \systolic_array_4x4.
+Performed a total of 0 changes.
+
+9.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\pe_mac'.
+Finding identical cells in module `\systolic_array_4x4'.
+Removed a total of 0 cells.
+
+9.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+9.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \pe_mac..
+Finding unused cells or wires in module \systolic_array_4x4..
+
+9.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module pe_mac.
+Optimizing module systolic_array_4x4.
+
+9.9. Finished OPT passes. (There is nothing left to do.)
+
+10. Executing CHECK pass (checking for obvious problems).
+Checking module pe_mac...
+Checking module systolic_array_4x4...
+Found and reported 0 problems.
+
+11. Printing statistics.
+
+=== pe_mac ===
+
+   Number of wires:                 13
+   Number of wire bits:            121
+   Number of public wires:           9
+   Number of public wire bits:      69
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  8
+     $add                            1
+     $adff                           3
+     $mul                            1
+     $mux                            3
+
+=== systolic_array_4x4 ===
+
+   Number of wires:                 71
+   Number of wire bits:            984
+   Number of public wires:          64
+   Number of public wire bits:     968
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 25
+     $add                            1
+     $adff                           1
+     $adffe                          1
+     $ge                             1
+     $lt                             1
+     $mux                            3
+     $reduce_bool                    1
+     pe_mac                         16
+
+=== design hierarchy ===
+
+   systolic_array_4x4                1
+     pe_mac                         16
+
+   Number of wires:                279
+   Number of wire bits:           2920
+   Number of public wires:         208
+   Number of public wire bits:    2072
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                137
+     $add                           17
+     $adff                          49
+     $adffe                          1
+     $ge                             1
+     $lt                             1
+     $mul                           16
+     $mux                           51
+     $reduce_bool                    1
+
+12. Executing Verilog backend.
+
+12.1. Executing BMUXMAP pass.
+
+12.2. Executing DEMUXMAP pass.
+Dumping module `\pe_mac'.
+Dumping module `\systolic_array_4x4'.
+
+13. Executing JSON backend.
+
+Warnings: 3 unique messages, 3 total
+End of script. Logfile hash: cabb1f9b22, CPU: user 0.10s system 0.06s, MEM: 11.75 MB peak
+Yosys 0.33 (git sha1 2584903a060)
+Time spent: 20% 3x read_verilog (0 sec), 20% 7x opt_clean (0 sec), ...
