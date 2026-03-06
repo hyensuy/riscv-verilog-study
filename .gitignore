@@ -1,0 +1,9 @@
+# Verilator / simulation generated
+**/obj_dir/
+**/*.fst
+**/*.fst.hier
+**/compile.log
+
+# Yosys generated netlists/json (keep yosys.log if desired)
+**/build/*.json
+**/build/*_netlist.v
