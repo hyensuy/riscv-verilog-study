@@ -1,8 +1,8 @@
 ./sim_define.v
 
-+libext+.vp
++libext+.v+.vp
 
-../../src/pipelined_cpu/rv32i_cpu_with_cla_protected.vp
+../../src/pipelined_cpu/rv32i_cpu_unprotected.v
 
 ../../src/memory/ASYNC_RAM_DP_WBE.v
 

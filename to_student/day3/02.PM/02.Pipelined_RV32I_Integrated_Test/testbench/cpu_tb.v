@@ -208,7 +208,8 @@ end
 
   initial begin
     `ifndef IVERILOG
-        $vcdpluson;
+        $dumpfile("cpu_tb.vcd");
+        $dumpvars(0, cpu_tb);
     `endif
     `ifdef IVERILOG
         $dumpfile("cpu_tb.fst");
