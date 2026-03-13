@@ -26,7 +26,7 @@ module datapath #(parameter RESET_PC=32'h1000_0000)(
   wire [31:0] pcPlus4D,instrD;
   wire [4:0] rs1D = instrD[19:15], rs2D = instrD[24:20], rdD = instrD[11:7];
   wire [2:0] funct3D = instrD[14:12];
-  wire [31:0] rd1D,rd2D,ImmExtD;
+  wire [31:0] rd1D_raw,rd2D_raw,rd1D,rd2D,ImmExtD;
   assign if_id_inst = instrD;
 
   if_id_reg i_ifid(.clk(clk),.reset(reset),.stallD(stallD),.flushD(flushD),.pcF(pcRegF),.pcPlus4F(pcPlus4F),.instrF(instrF),.pcD(pcD),.pcPlus4D(pcPlus4D),.instrD(instrD));
@@ -45,7 +45,9 @@ module datapath #(parameter RESET_PC=32'h1000_0000)(
   wire RegWriteW;
   wire [4:0] rdW;
   wire [31:0] ResultW;
-  reg_file_async rf(.clk(clk),.we(RegWriteW),.ra1(rs1D),.ra2(rs2D),.wa(rdW),.wd(ResultW),.rd1(rd1D),.rd2(rd2D));
+  reg_file_async rf(.clk(clk),.we(RegWriteW),.ra1(rs1D),.ra2(rs2D),.wa(rdW),.wd(ResultW),.rd1(rd1D_raw),.rd2(rd2D_raw));
+  assign rd1D = (RegWriteW && (rdW != 5'd0) && (rdW == rs1D)) ? ResultW : rd1D_raw;
+  assign rd2D = (RegWriteW && (rdW != 5'd0) && (rdW == rs2D)) ? ResultW : rd2D_raw;
   extend i_ext(.instr(instrD),.ImmSrc(ImmSrcD),.ImmExt(ImmExtD));
 
   // Hazard / flush controls
@@ -75,13 +77,15 @@ module datapath #(parameter RESET_PC=32'h1000_0000)(
   wire RegWriteM;
   wire [1:0] ResultSrcM;
   wire [31:0] pcPlus4M,ALUResultM,WriteDataM;
+  wire [31:0] ResultM_fwd;
   wire [4:0] rdM;
   wire [2:0] funct3M;
   assign ex_mem_rd = rdM;
 
   forwarding_unit i_fwd(.RegWriteM(RegWriteM),.RegWriteW(RegWriteW),.rs1E(rs1E),.rs2E(rs2E),.rdM(rdM),.rdW(rdW),.ForwardAE(ForwardAE),.ForwardBE(ForwardBE));
-  mux3 #(32) muxA(.d0(rd1E),.d1(ResultW),.d2(ALUResultM),.s(ForwardAE),.y(SrcA_fwd));
-  mux3 #(32) muxB(.d0(rd2E),.d1(ResultW),.d2(ALUResultM),.s(ForwardBE),.y(SrcB_fwd));
+  assign ResultM_fwd = (ResultSrcM == 2'b10) ? pcPlus4M : ALUResultM;
+  mux3 #(32) muxA(.d0(rd1E),.d1(ResultW),.d2(ResultM_fwd),.s(ForwardAE),.y(SrcA_fwd));
+  mux3 #(32) muxB(.d0(rd2E),.d1(ResultW),.d2(ResultM_fwd),.s(ForwardBE),.y(SrcB_fwd));
   assign SrcA_E = (ALUSrcAE==2'b01) ? pcE : (ALUSrcAE==2'b10) ? 32'd0 : SrcA_fwd;
   assign SrcB_E = ALUSrcBE ? ImmExtE : SrcB_fwd;
 
