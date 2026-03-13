@@ -1,0 +1,149 @@
+[*]
+[*] GTKWave Analyzer v3.3.116 (w)1999-2023 BSI
+[*] Fri Mar 13 08:07:17 2026
+[*]
+[dumpfile] "/home/gustn/riscv_project/riscv-verilog-study/to_student/day3/02.PM/02.Pipelined_RV32I_Integrated_Test/sim/verilator/wave_rv32i_pipeline.fst"
+[dumpfile_mtime] "Fri Mar 13 05:45:07 2026"
+[dumpfile_size] 5368
+[savefile] "/home/gustn/riscv_project/riscv-verilog-study/to_student/day3/02.PM/02.Pipelined_RV32I_Integrated_Test/sim/verilator/rv32i_pipeline_stage_debug.gtkw"
+[timestart] 7
+[size] 1920 985
+[pos] -27 -24
+*-2.606922 31 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] TOP.
+[treeopen] TOP.rv32i_cpu.
+[treeopen] TOP.rv32i_cpu.u_cpu.
+[treeopen] TOP.rv32i_cpu.u_cpu.i_datapath.
+[treeopen] TOP.rv32i_cpu.u_cpu.i_datapath.i_controller.
+[treeopen] TOP.rv32i_cpu.u_cpu.i_datapath.i_ifid.
+[sst_width] 297
+[signals_width] 166
+[sst_expanded] 1
+[sst_vpaned_height] 589
+@28
+TOP.clk
+@22
+TOP.pc[31:0]
+@28
+TOP.reset
+@22
+TOP.inst[31:0]
+@c00200
+-IF
+@22
+TOP.rv32i_cpu.u_cpu.i_datapath.i_ifid.pcF[31:0]
+TOP.rv32i_cpu.u_cpu.i_datapath.i_ifid.pcPlus4F[31:0]
+TOP.rv32i_cpu.u_cpu.i_datapath.i_nextpc.pcNextF[31:0]
+TOP.rv32i_cpu.u_cpu.i_datapath.i_ifid.instrF[31:0]
+@28
+TOP.rv32i_cpu.u_cpu.i_datapath.i_hdu.stallF
+@1401200
+-IF
+@c00200
+-Decode
+@22
+TOP.rv32i_cpu.u_cpu.i_datapath.i_ifid.pcD[31:0]
+TOP.rv32i_cpu.u_cpu.i_datapath.i_ifid.pcPlus4D[31:0]
+TOP.rv32i_cpu.u_cpu.i_datapath.i_ifid.instrD[31:0]
+TOP.rv32i_cpu.u_cpu.i_datapath.i_idex.rs1D[4:0]
+TOP.rv32i_cpu.u_cpu.i_datapath.i_idex.rs2D[4:0]
+TOP.rv32i_cpu.u_cpu.i_datapath.i_idex.rdD[4:0]
+TOP.rv32i_cpu.u_cpu.i_datapath.i_idex.rd1D[31:0]
+TOP.rv32i_cpu.u_cpu.i_datapath.i_idex.rd2D[31:0]
+TOP.rv32i_cpu.u_cpu.i_datapath.i_idex.ImmExtD[31:0]
+@28
+TOP.rv32i_cpu.u_cpu.i_datapath.i_idex.RegWriteD
+TOP.rv32i_cpu.u_cpu.i_datapath.i_idex.MemWriteD
+TOP.rv32i_cpu.u_cpu.i_datapath.i_idex.ResultSrcD[1:0]
+@22
+TOP.rv32i_cpu.u_cpu.i_datapath.i_idex.ALUControlD[4:0]
+@1401200
+-Decode
+@c00200
+-execute
+@22
+TOP.rv32i_cpu.u_cpu.i_datapath.i_idex.pcE[31:0]
+TOP.rv32i_cpu.u_cpu.i_datapath.i_idex.pcPlus4E[31:0]
+@28
+TOP.rv32i_cpu.u_cpu.i_datapath.i_idex.PCSrcE[1:0]
+@22
+TOP.rv32i_cpu.u_cpu.i_datapath.i_ext.instr[31:0]
+TOP.rv32i_cpu.u_cpu.i_datapath.i_idex.rs1E[4:0]
+TOP.rv32i_cpu.u_cpu.i_datapath.i_idex.rs2E[4:0]
+TOP.rv32i_cpu.u_cpu.i_datapath.i_idex.rdE[4:0]
+TOP.rv32i_cpu.u_cpu.i_datapath.i_idex.rd1E[31:0]
+TOP.rv32i_cpu.u_cpu.i_datapath.i_idex.rd2E[31:0]
+TOP.rv32i_cpu.u_cpu.i_datapath.i_idex.ImmExtE[31:0]
+@28
+TOP.rv32i_cpu.u_cpu.i_datapath.i_idex.ALUSrcAE[1:0]
+TOP.rv32i_cpu.u_cpu.i_datapath.i_idex.ALUSrcBE
+TOP.rv32i_cpu.u_cpu.i_datapath.i_idex.ALUSrcAE[1:0]
+@22
+TOP.rv32i_cpu.u_cpu.i_datapath.i_idex.ALUControlE[4:0]
+TOP.rv32i_cpu.u_cpu.i_datapath.i_exmem.ALUResultE[31:0]
+TOP.rv32i_cpu.u_cpu.i_datapath.pcTargetE[31:0]
+TOP.rv32i_cpu.u_cpu.i_datapath.jalrTargetE[31:0]
+@28
+TOP.rv32i_cpu.u_cpu.i_datapath.i_br.Btaken
+TOP.rv32i_cpu.u_cpu.i_datapath.i_br.N
+TOP.rv32i_cpu.u_cpu.i_datapath.i_br.Z
+TOP.rv32i_cpu.u_cpu.i_datapath.i_br.C
+TOP.rv32i_cpu.u_cpu.i_datapath.i_br.V
+TOP.rv32i_cpu.u_cpu.i_datapath.i_idex.RegWriteE
+TOP.rv32i_cpu.u_cpu.i_datapath.i_idex.MemWriteE
+TOP.rv32i_cpu.u_cpu.i_datapath.i_idex.ResultSrcE[1:0]
+TOP.rv32i_cpu.u_cpu.i_datapath.i_idex.flushE
+TOP.rv32i_cpu.u_cpu.i_datapath.i_fwd.ForwardAE[1:0]
+TOP.rv32i_cpu.u_cpu.i_datapath.i_fwd.ForwardBE[1:0]
+@22
+TOP.rv32i_cpu.u_cpu.i_datapath.SrcA_E[31:0]
+TOP.rv32i_cpu.u_cpu.i_datapath.SrcB_E[31:0]
+@1401200
+-execute
+@c00200
+-mem
+@22
+TOP.rv32i_cpu.u_cpu.i_datapath.pcPlus4M[31:0]
+TOP.rv32i_cpu.u_cpu.i_datapath.i_exmem.ALUResultM[31:0]
+TOP.rv32i_cpu.u_cpu.i_datapath.i_exmem.WriteDataM[31:0]
+@28
+TOP.rv32i_cpu.u_cpu.i_datapath.i_exmem.MemWriteM
+TOP.rv32i_cpu.u_cpu.i_datapath.i_exmem.ResultSrcM[1:0]
+@22
+TOP.rv32i_cpu.u_cpu.i_datapath.i_be.Byte_Enable[3:0]
+TOP.rv32i_cpu.u_cpu.i_datapath.i_be.BE_WD[31:0]
+TOP.rv32i_cpu.u_cpu.i_datapath.i_be.BE_RD[31:0]
+@28
+TOP.rv32i_cpu.u_cpu.i_datapath.i_be.Addr_Last2[1:0]
+@22
+TOP.rv32i_cpu.u_cpu.i_datapath.MemAddrM[31:0]
+TOP.rv32i_cpu.u_cpu.i_datapath.MemWDataM[31:0]
+TOP.rv32i_cpu.u_cpu.i_datapath.MemRData[31:0]
+TOP.rv32i_cpu.u_cpu.i_datapath.i_exmem.rdM[4:0]
+@28
+TOP.rv32i_cpu.u_cpu.i_datapath.i_exmem.RegWriteM
+@1401200
+-mem
+@c00201
+-WB
+@22
+TOP.rv32i_cpu.u_cpu.i_datapath.i_memwb.pcPlus4W[31:0]
+TOP.rv32i_cpu.u_cpu.i_datapath.i_memwb.rdW[4:0]
+@28
+TOP.rv32i_cpu.u_cpu.i_datapath.i_memwb.RegWriteW
+TOP.rv32i_cpu.u_cpu.i_datapath.i_memwb.ResultSrcW[1:0]
+@22
+TOP.rv32i_cpu.u_cpu.i_datapath.i_memwb.ALUResultW[31:0]
+@28
+TOP.rv32i_cpu.u_cpu.i_datapath.i_wbsel.ResultSrc[1:0]
+@22
+TOP.rv32i_cpu.u_cpu.i_datapath.i_memwb.ReadDataW[31:0]
+@28
+TOP.rv32i_cpu.u_cpu.i_datapath.rf.we
+@22
+TOP.rv32i_cpu.u_cpu.i_datapath.rf.wa[4:0]
+TOP.rv32i_cpu.u_cpu.i_datapath.rf.wd[31:0]
+@1401201
+-WB
+[pattern_trace] 1
+[pattern_trace] 0
